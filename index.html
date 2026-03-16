@@ -2,64 +2,60 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>For Art ❤️</title>
+<title>กดตรงนี้สิ</title>
 
 <style>
 
 body{
-    margin:0;
-    background: linear-gradient(to bottom, #ff9a9e, #fecfef);
-    height:100vh;
-    overflow:hidden;
-    font-family: Arial;
-    text-align:center;
-}
-
-.container{
-    position:relative;
-    top:35%;
-}
-
-h1{
-    color:white;
-    font-size:40px;
+background:#111;
+color:white;
+font-family:Arial;
+text-align:center;
+height:100vh;
+display:flex;
+justify-content:center;
+align-items:center;
+overflow:hidden;
 }
 
 button{
-    padding:15px 30px;
-    font-size:20px;
-    border:none;
-    border-radius:15px;
-    background:#ff4d6d;
-    color:white;
-    cursor:pointer;
+padding:20px 40px;
+font-size:30px;
+border:none;
+border-radius:15px;
+background:#ff4081;
+color:white;
+cursor:pointer;
 }
 
-#message{
-    margin-top:20px;
-    font-size:26px;
-    color:white;
-    display:none;
+#msg{
+display:none;
+font-size:80px;
+margin-top:20px;
+animation:bounce 0.5s infinite alternate;
 }
 
-/* หัวใจ */
+@keyframes bounce{
+from{transform:scale(1);}
+to{transform:scale(1.2);}
+}
 
-.heart{
-    position:fixed;
-    bottom:-20px;
-    font-size:25px;
-    animation:float 6s linear infinite;
+.laugh{
+position:fixed;
+bottom:-50px;
+font-size:40px;
+animation:float 4s linear forwards;
 }
 
 @keyframes float{
-    0%{
-        transform:translateY(0);
-        opacity:1;
-    }
-    100%{
-        transform:translateY(-100vh);
-        opacity:0;
-    }
+0%{
+transform:translateY(0);
+opacity:1;
+}
+100%{
+transform:translateY(-120vh);
+opacity:0;
+}
 }
 
 </style>
@@ -68,49 +64,43 @@ button{
 
 <body>
 
-<div class="container">
+<div>
 
-<h1>บักอาร์ต มีอะไรจะบอก ❤️</h1>
+<h1>กดตรงนี้สิ 😏</h1>
 
-<button onclick="showLove()">กดตรงนี้ก่อน</button>
+<button onclick="start()">กดเลย</button>
 
-<div id="message">
-ฝนอยากบอกว่า...<br><br>
-ขอบคุณที่อยู่ข้างฝนนะ<br>
-อยู่ด้วยกันไปนาน ๆ นะบักอาร์ต 🥰<br><br>
-ฝนรักอาร์ต ❤️
-</div>
+<div id="msg">อีแก่ 🤣🤣🤣</div>
 
 </div>
 
 <script>
 
-function showLove(){
-    document.getElementById("message").style.display="block";
-}
+function start(){
 
-/* สร้างหัวใจลอย */
+document.getElementById("msg").style.display="block";
 
-function createHeart(){
-
-    const heart = document.createElement("div");
-    heart.classList.add("heart");
-
-    heart.innerHTML="❤️";
-
-    heart.style.left=Math.random()*100+"vw";
-    heart.style.fontSize=(20+Math.random()*30)+"px";
-    heart.style.animationDuration=(3+Math.random()*5)+"s";
-
-    document.body.appendChild(heart);
-
-    setTimeout(()=>{
-        heart.remove();
-    },6000);
+setInterval(createLaugh,200);
 
 }
 
-setInterval(createHeart,300);
+function createLaugh(){
+
+const e=document.createElement("div");
+
+e.classList.add("laugh");
+
+e.innerHTML="🤣";
+
+e.style.left=Math.random()*100+"vw";
+
+e.style.fontSize=(30+Math.random()*40)+"px";
+
+document.body.appendChild(e);
+
+setTimeout(()=>{e.remove()},4000);
+
+}
 
 </script>
 
