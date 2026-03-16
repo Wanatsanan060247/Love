@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>For Art ❤️</title>
+
+<style>
+
+body{
+    margin:0;
+    background: linear-gradient(to bottom, #ff9a9e, #fecfef);
+    height:100vh;
+    overflow:hidden;
+    font-family: Arial;
+    text-align:center;
+}
+
+.container{
+    position:relative;
+    top:35%;
+}
+
+h1{
+    color:white;
+    font-size:40px;
+}
+
+button{
+    padding:15px 30px;
+    font-size:20px;
+    border:none;
+    border-radius:15px;
+    background:#ff4d6d;
+    color:white;
+    cursor:pointer;
+}
+
+#message{
+    margin-top:20px;
+    font-size:26px;
+    color:white;
+    display:none;
+}
+
+/* หัวใจ */
+
+.heart{
+    position:fixed;
+    bottom:-20px;
+    font-size:25px;
+    animation:float 6s linear infinite;
+}
+
+@keyframes float{
+    0%{
+        transform:translateY(0);
+        opacity:1;
+    }
+    100%{
+        transform:translateY(-100vh);
+        opacity:0;
+    }
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+<h1>บักอาร์ต มีอะไรจะบอก ❤️</h1>
+
+<button onclick="showLove()">กดตรงนี้ก่อน</button>
+
+<div id="message">
+ฝนอยากบอกว่า...<br><br>
+ขอบคุณที่อยู่ข้างฝนนะ<br>
+อยู่ด้วยกันไปนาน ๆ นะบักอาร์ต 🥰<br><br>
+ฝนรักอาร์ต ❤️
+</div>
+
+</div>
+
+<script>
+
+function showLove(){
+    document.getElementById("message").style.display="block";
+}
+
+/* สร้างหัวใจลอย */
+
+function createHeart(){
+
+    const heart = document.createElement("div");
+    heart.classList.add("heart");
+
+    heart.innerHTML="❤️";
+
+    heart.style.left=Math.random()*100+"vw";
+    heart.style.fontSize=(20+Math.random()*30)+"px";
+    heart.style.animationDuration=(3+Math.random()*5)+"s";
+
+    document.body.appendChild(heart);
+
+    setTimeout(()=>{
+        heart.remove();
+    },6000);
+
+}
+
+setInterval(createHeart,300);
+
+</script>
+
+</body>
+</html>
