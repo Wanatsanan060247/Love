@@ -2,103 +2,134 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>กดตรงนี้สิ</title>
+<title>หยุดนอยได้แล้วว 💖</title>
 
 <style>
 
 body{
-background:#111;
-color:white;
+margin:0;
+background:linear-gradient(135deg,#ff9ecf,#ffcce6);
 font-family:Arial;
-text-align:center;
+overflow:hidden;
 height:100vh;
 display:flex;
 justify-content:center;
 align-items:center;
-overflow:hidden;
+text-align:center;
+}
+
+.container{
+z-index:2;
+}
+
+h1{
+font-size:50px;
+color:white;
+text-shadow:2px 2px 10px rgba(0,0,0,0.2);
 }
 
 button{
-padding:20px 40px;
-font-size:30px;
+padding:20px 50px;
+font-size:28px;
 border:none;
-border-radius:15px;
-background:#ff4081;
-color:white;
+border-radius:20px;
+background:white;
+color:#ff4f9a;
 cursor:pointer;
+transition:0.3s;
+box-shadow:0 5px 15px rgba(0,0,0,0.2);
+}
+
+button:hover{
+transform:scale(1.1);
 }
 
 #msg{
 display:none;
-font-size:80px;
-margin-top:20px;
-animation:bounce 0.5s infinite alternate;
+margin-top:30px;
+font-size:70px;
+font-weight:bold;
+color:white;
+animation:pulse 1s infinite;
+text-shadow:2px 2px 15px rgba(0,0,0,0.3);
 }
 
-@keyframes bounce{
-from{transform:scale(1);}
-to{transform:scale(1.2);}
+@keyframes pulse{
+0%{transform:scale(1);}
+50%{transform:scale(1.1);}
+100%{transform:scale(1);}
 }
 
-.laugh{
+.heart{
 position:fixed;
 bottom:-50px;
-font-size:40px;
-animation:float 4s linear forwards;
+font-size:30px;
+animation:float 5s linear forwards;
+opacity:0.9;
 }
 
 @keyframes float{
 0%{
-transform:translateY(0);
+transform:translateY(0) rotate(0deg);
 opacity:1;
 }
 100%{
-transform:translateY(-120vh);
+transform:translateY(-120vh) rotate(360deg);
 opacity:0;
 }
 }
 
 </style>
-
 </head>
 
 <body>
 
-<div>
+<div class="container">
 
 <h1>กดตรงนี้สิ 😏</h1>
 
 <button onclick="start()">กดเลย</button>
 
-<div id="msg">อีแก่ 🤣🤣🤣</div>
+<div id="msg">
+ไอ้เหี้ยแว่นหยุดนอย 💖
+</div>
 
 </div>
 
 <script>
 
+let started=false;
+
 function start(){
+
+if(started) return;
+started=true;
 
 document.getElementById("msg").style.display="block";
 
-setInterval(createLaugh,200);
+setInterval(createHeart,150);
 
 }
 
-function createLaugh(){
+function createHeart(){
 
 const e=document.createElement("div");
 
-e.classList.add("laugh");
+e.classList.add("heart");
 
-e.innerHTML="🤣";
+const hearts=["💖","💗","💕","💞","💓"];
+
+e.innerHTML=hearts[Math.floor(Math.random()*hearts.length)];
 
 e.style.left=Math.random()*100+"vw";
 
-e.style.fontSize=(30+Math.random()*40)+"px";
+e.style.fontSize=(20+Math.random()*50)+"px";
 
 document.body.appendChild(e);
 
-setTimeout(()=>{e.remove()},4000);
+setTimeout(()=>{
+e.remove();
+},5000);
 
 }
 
